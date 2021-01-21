@@ -3,10 +3,14 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 #imports CSV file as a dataframe
-df = pd.read_csv('HRdata.csv', header = None)
+df = pd.read_csv('hrdata.csv', header = None)
+df.reset_index()
 
-#rename rows
-df = df.rename({0 : 'data',
+#transpose rows and cols
+df = df.T
+
+#rename cols
+df = df.rename(columns = {0 : 'data',
                 1 : 'type'})
 
 #creates dictionary for data types
@@ -28,15 +32,12 @@ datatypes = {
                         'AxyMgz',
                         'Temperature',
                         'Error',
-                        'Version']}
-
-typetable = pd.DataFrame(datatypes)
-print(typetable)
-
-#stuff to do
-#reshape table from wide to long
-#add in column using datatypes dict
-#plot graphs
+                        'Version']
+                        }
 
 #prints df
 print(df)
+
+#STUFF TO DO:
+
+#plot graphs
