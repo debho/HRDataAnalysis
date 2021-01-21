@@ -2,17 +2,14 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-# imports CSV file as a dataframe
+#imports CSV file as a dataframe
 df = pd.read_csv('HRdata.csv', header = None)
 
-# rename rows
+#rename rows
 df = df.rename({0 : 'data',
                 1 : 'type'})
 
-# clean data to make sure only types only include 0-15
-
-
-# creates dictionary for data types
+#creates dictionary for data types
 datatypes = {
             'typenum' : [0, 1, 2, 3, 4, 5, 6, 7, 8,
                          9, 10, 11, 12, 13, 14, 15],
@@ -36,6 +33,10 @@ datatypes = {
 typetable = pd.DataFrame(datatypes)
 print(typetable)
 
+#stuff to do
+#reshape table from wide to long
+#add in column using datatypes dict
+#plot graphs
 
-# prints df
+#prints df
 print(df)
