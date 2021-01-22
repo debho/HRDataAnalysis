@@ -38,46 +38,62 @@ typetable = pd.DataFrame(datatypes)
 print(typetable) 
 
 #extract EEG data
-eeg1 = df[df['type'] == 2]
-eeg2 = df[df['type'] == 3]
-eeg3 = df[df['type'] == 4]
-eeg4 = df[df['type'] == 5]
+eeg_1 = df[df['type'] == 2]
+eeg_2 = df[df['type'] == 3]
+eeg_3 = df[df['type'] == 4]
+eeg_4 = df[df['type'] == 5]
 
 #extract axy data
-axyX = df[df['type'] == 7]
-axyY = df[df['type'] == 8]
-axyZ = df[df['type'] == 9]
+axy_x = df[df['type'] == 7]
+axy_y = df[df['type'] == 8]
+axy_z = df[df['type'] == 9]
 
-#recode using OOP API rather than global API
 #fix the x-axis to reflect seconds rather than some crazy huge number
 ##change x-ticks by dividing values by 250 each??
 #add legends
-#add titles, x labels, y labels
 
-#plotting eeg data
-fig, ax = plt.subplots()
-ax.plot(1,1)
+#EEG PLOT
+#setting up graph
+fig, ax = plt.subplots(figsize = (10,5))
 ax.set_title('EEG Data')
+ax.set_xlabel('Time')
+ax.set_ylabel('Amplitude (a.u.)')
 
-x_val = pd.Series(range(0, eeg1['value'].size))
-x_val2 = pd.Series(range(0, eeg4['value'].size))
-y_val = eeg1['value']
-y_val2 = eeg2['value']
-y_val3 = eeg3['value']
-y_val4 = eeg4['value']
-plt.plot(x_val, y_val)
-plt.plot(x_val, y_val2)
-plt.plot(x_val, y_val3)
-plt.plot(x_val2, y_val4)
-plt.show()
+#defining values
+x_val = pd.Series(range(0, eeg_1['value'].size))
+x_val2 = pd.Series(range(0, eeg_4['value'].size)) #EEG4 has diff number of readings
+y_val = eeg_1['value']
+y_val2 = eeg_2['value']
+y_val3 = eeg_3['value']
+y_val4 = eeg_4['value']
+
+#plotting EEG data
+ax.plot(x_val, y_val)
+ax.plot(x_val, y_val2)
+ax.plot(x_val, y_val3)
+ax.plot(x_val2, y_val4)
+
+fig.savefig('EEG.png')
+
+#AXY PLOT
+#setting up figure
+fig, ax = plt.subplots(figsize = (10,5))
+ax.set_title('Axy Data')
+ax.set_xlabel('Time')
+ax.set_ylabel('Amplitude (a.u.)')
+
+#defining values
+x_val = pd.Series(range(0, axy_x['value'].size))
+x_val1 = pd.Series(range(0, axy_y['value'].size))
+x_val2 = pd.Series(range(0, axy_z['value'].size))
+y_val = axy_x['value']
+y_val1 = axy_y['value']
+y_val2 = axy_z['value']
 
 #plotting axy data
-#FIXME: put axy graph on a separate plot from the EEG data
-#x_val = pd.Series(range(0, axyX['value'].size))
-#y_val = axyX['value']
-#y_val1 = axyY['value']
-#y_val2 = axyZ['value']
-#plt.plot(x_val, y_val)
-#plt.plot(x_val, y_val1)
-#plt.plot(x_val, y_val2)
+ax.plot(x_val, y_val)
+ax.plot(x_val1, y_val1)
+ax.plot(x_val2, y_val2)
+
+plt.savefig('axy.png')
 
