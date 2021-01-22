@@ -35,15 +35,21 @@ datatypes = {
                         }
 
 typetable = pd.DataFrame(datatypes)
-print(typetable)
+print(typetable) 
 
 #extract EEG data
-eeg = df[
-    (df['type'] >= 2) &
-    (df['type'] <= 5)
-]
+eeg1 = df[df['type'] == 2]
+eeg1.reset_index()
+print(eeg1)
 
-print(eeg)
+eeg2 = df[df['type'] == 3]
+print(eeg2)
+
+eeg3 = df[df['type'] == 4]
+print(eeg3)
+
+eeg4 = df[df['type'] == 5]
+print(eeg4)
 
 #extract axy data
 axy = df[
@@ -52,7 +58,22 @@ axy = df[
 ]
 print(axy)
 
+#REALLY MESSY CODE NEED TO CLEAN UP
+#recode using OOP API rather than global API
+#fix the x-axis to reflect seconds rather than some crazy huge number
+##change x-ticks by dividing values by 250 each??
+#plotting eeg data
+x_val = pd.Series(range(0, eeg1['value'].size))
+x_val2 = pd.Series(range(0, eeg4['value'].size))
+y_val = eeg1['value']
+y_val2 = eeg2['value']
+y_val3 = eeg3['value']
+y_val4 = eeg4['value']
+plt.plot(x_val, y_val)
+plt.plot(x_val, y_val2)
+plt.plot(x_val, y_val3)
+plt.plot(x_val2, y_val4)
+plt.show()
 
-#STUFF TO DO:
-#add column that shows type (mapped to dictionary)
-#plot graphs
+#plotting axy data
+
