@@ -52,17 +52,18 @@ eeg4 = df[df['type'] == 5]
 print(eeg4)
 
 #extract axy data
-axy = df[
-    (df['type'] >= 7) &
-    (df['type'] <= 12)
-]
-print(axy)
+axyX = df[df['type'] == 7]
+axyY = df[df['type'] == 8]
+axyZ = df[df['type'] == 9]
 
-#REALLY MESSY CODE NEED TO CLEAN UP
 #recode using OOP API rather than global API
 #fix the x-axis to reflect seconds rather than some crazy huge number
 ##change x-ticks by dividing values by 250 each??
 #plotting eeg data
+fig, ax = plt.subplots()
+ax.plot(1,1)
+ax.set_title('EEG Data')
+
 x_val = pd.Series(range(0, eeg1['value'].size))
 x_val2 = pd.Series(range(0, eeg4['value'].size))
 y_val = eeg1['value']
@@ -76,4 +77,14 @@ plt.plot(x_val2, y_val4)
 plt.show()
 
 #plotting axy data
+#FIXME: put axy graph on a separate plot from the EEG data
+x_val = pd.Series(range(0, axyX['value'].size))
+y_val = axyX['value']
+y_val1 = axyY['value']
+y_val2 = axyZ['value']
+plt.plot(x_val, y_val)
+plt.plot(x_val, y_val1)
+plt.plot(x_val, y_val2)
+plt.show()
+
 
