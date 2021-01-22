@@ -73,13 +73,11 @@ plt.show()
 
 #plotting axy data
 #FIXME: put axy graph on a separate plot from the EEG data
-x_val = pd.Series(range(0, axyX['value'].size))
-y_val = axyX['value']
-y_val1 = axyY['value']
-y_val2 = axyZ['value']
-plt.plot(x_val, y_val)
-plt.plot(x_val, y_val1)
-plt.plot(x_val, y_val2)
-plt.show()
-
+#x_val = pd.Series(range(0, axyX['value'].size))
+#y_val = axyX['value']
+#y_val1 = axyY['value']
+#y_val2 = axyZ['value']
+#plt.plot(x_val, y_val)
+#plt.plot(x_val, y_val1)
+#plt.plot(x_val, y_val2)
 
