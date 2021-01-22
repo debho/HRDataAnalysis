@@ -39,17 +39,9 @@ print(typetable)
 
 #extract EEG data
 eeg1 = df[df['type'] == 2]
-eeg1.reset_index()
-print(eeg1)
-
 eeg2 = df[df['type'] == 3]
-print(eeg2)
-
 eeg3 = df[df['type'] == 4]
-print(eeg3)
-
 eeg4 = df[df['type'] == 5]
-print(eeg4)
 
 #extract axy data
 axyX = df[df['type'] == 7]
@@ -59,6 +51,9 @@ axyZ = df[df['type'] == 9]
 #recode using OOP API rather than global API
 #fix the x-axis to reflect seconds rather than some crazy huge number
 ##change x-ticks by dividing values by 250 each??
+#add legends
+#add titles, x labels, y labels
+
 #plotting eeg data
 fig, ax = plt.subplots()
 ax.plot(1,1)
