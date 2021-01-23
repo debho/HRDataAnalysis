@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 
 #imports CSV file as a dataframe
 df = pd.read_csv('hrdata.csv', header = None)
+
 #transpose rows and cols
 df = df.T
 df.reset_index()
@@ -48,20 +49,12 @@ axy_x = df[df['type'] == 7]
 axy_y = df[df['type'] == 8]
 axy_z = df[df['type'] == 9]
 
-#fix the x-axis to reflect seconds rather than some crazy huge number
-##change x-ticks by dividing values by 250 each??
-#add legends
-
 #EEG PLOT
 #setting up graph
 fig, ax = plt.subplots(figsize = (10,5))
 ax.set_title('EEG Data')
 ax.set_xlabel('Time (seconds)')
 ax.set_ylabel('Amplitude (a.u.)')
-#ax.set_xlim(0, 20)
-#ax.set_xticks(range(0,21))
-
-#plt.xticks(range(min(valueX), max(valueX)+1))
 
 #defining values
 x_val = pd.Series(range(0, eeg_1['value'].size), dtype = 'float64')
