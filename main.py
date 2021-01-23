@@ -58,6 +58,10 @@ fig, ax = plt.subplots(figsize = (10,5))
 ax.set_title('EEG Data')
 ax.set_xlabel('Time')
 ax.set_ylabel('Amplitude (a.u.)')
+#ax.set_xlim(0, 20)
+#ax.set_xticks(range(0,21))
+
+#plt.xticks(range(min(valueX), max(valueX)+1))
 
 #defining values
 x_val = pd.Series(range(0, eeg_1['value'].size))
@@ -67,11 +71,17 @@ y_val2 = eeg_2['value']
 y_val3 = eeg_3['value']
 y_val4 = eeg_4['value']
 
+#adjusting x-ticks
+
+
 #plotting EEG data
-ax.plot(x_val, y_val)
-ax.plot(x_val, y_val2)
-ax.plot(x_val, y_val3)
-ax.plot(x_val2, y_val4)
+ax.plot(x_val, y_val, label = 'EEG1')
+ax.plot(x_val, y_val2, label = 'EEG2')
+ax.plot(x_val, y_val3, label = 'EEG3')
+ax.plot(x_val2, y_val4, label = 'EEG4')
+
+#adding legend
+ax.legend()
 
 fig.savefig('EEG.png')
 
@@ -91,9 +101,11 @@ y_val1 = axy_y['value']
 y_val2 = axy_z['value']
 
 #plotting axy data
-ax.plot(x_val, y_val)
-ax.plot(x_val1, y_val1)
-ax.plot(x_val2, y_val2)
+ax.plot(x_val, y_val, label = 'Axy X')
+ax.plot(x_val1, y_val1, label = 'Axy Y')
+ax.plot(x_val2, y_val2, label = 'Axy Z')
 
+#adding legend
+ax.legend()
 plt.savefig('axy.png')
 
